@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HRLF and YOU</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+      }
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+
+      p {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 20px;
+        margin: 0;
+        font-size: 24px;
+      }
+
+      a {
+        color: #e0e0e0;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: white;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="image" src="" alt="" />
+    <p id="text"></p>
+
+    <script>
+      const slides = [
+        {
+          text: "Welcome to our Presentation on ChatGPT-4",
+          presenter_notes:
+            "Introduce yourself and the topic, briefly describe the agenda.",
+          image:
+            "https://www.androidauthority.com/wp-content/uploads/2023/01/chatgpt-who-are-you-stock-photo-1536w-864h.jpg.webp",
+        },
+        {
+          text: "Section One: What's in the Pipeline",
+          presenter_notes:
+            "Explain that this section will cover the latest developments and features of ChatGPT-4.",
+          image:
+            "https://miro.medium.com/v2/resize:fit:1400/0*Z7kKXEqYCMIonBBU",
+        },
+        {
+          text: "1.1 Vector Databases",
+          presenter_notes:
+            "Mention that this subsection will discuss the role of vector databases in ChatGPT-4.",
+          image:
+            "https://res.cloudinary.com/practicaldev/image/fetch/s--uQUPsCGS--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7ay291fm44fafe0n5igr.png",
+        },
+        {
+          text: "1.2 AGI",
+          presenter_notes: "Sparks of AGI microsoft paper.",
+          image:
+            "https://www.c4isrnet.com/resizer/p0KzVmOBu-Izwfr34cREiaABwdM=/arc-photo-archetype/arc3-prod/public/GTEUDWH56JAEPE3NVL3MWEG3FQ.jpg",
+        },
+        {
+          text: "1.3 ChatGPT Plug-ins",
+          presenter_notes:
+            "https://openai.com/waitlist/plugins this is your way in go apply https://openai.com/waitlist/plugins",
+          image:
+            "https://149695847.v2.pressablecdn.com/wp-content/uploads/2023/03/chatgpt-plugin-1536x864.jpg",
+        },
+        {
+          text: "Section Two: Human Feedback Reinforcement Learning and GPT Basics",
+          presenter_notes:
+            "Explain that this section will delve deeper into the core concepts behind ChatGPT-4. To help everyone learn. I want to udnerstand the building blocks.",
+          image:
+            "https://occ-0-1432-768.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZMHor8VvuqUiWwUSgzARQX6ZYLihWVX9_iIpzEiuWXUb1NQkDKQo3ZK4JG7Q-HGnYTYTvPH9jcRhCESnGtcfFBQyyOmhmqieGEm.jpg?r=e5c",
+        },
+        {
+          text: "2.0 The simulacrum",
+          presenter_notes:
+            "Give an overview of the subsections to be covered in this section.",
+          image: "https://images.unsplash.com/photo-1489875347897-49f64b51c1f8",
+        },
+        {
+          text: "1.1 Vector Databases are hot",
+          presenter_notes:
+            "Today, we'll discuss the significant funding received by various vector database companies, such as Weaviate, Pinecone DB, and Chroma. This growing interest in vector databases highlights their potential impact on the AI industry.",
+          image: "images/1.png",
+        },
+        {
+          text: "Hot hot",
+          presenter_notes: "Pine cone 28 million",
+          image: "images/2.png",
+        },
+        {
+          text: "Hot hot hot",
+          presenter_notes: "Chroma 1.2 k github stars",
+          image: "images/3.png",
+        },
+        {
+          text: "What the hell are vectors?",
+          presenter_notes: "Vectors are arrays or lists of numbers.",
+          image: "images/4.png",
+        },
+        {
+          text: "Using numbers to represent data.",
+          presenter_notes:
+            "There are many ways to vectorize words and language cat and dog example distance to other words",
+          image: "images/4-1.png",
+        },
+        {
+          text: "Now what?",
+          presenter_notes:
+            "Vector databases store arrays of numbers clustered together based on similarity. They can be queried with ultra-low latency, making them ideal for AI-driven applications. Some examples of native vector databases include Weaviate, Milvus, Pinecone, and Chroma.",
+          image: "images/4-2.png",
+        },
+        {
+          text: "Extending LLMs with Vector Databases",
+          presenter_notes:
+            "Vector databases can extend large language models (LLMs) with long-term memory by providing customized context and retrieving historical data. This enhancement allows for improved AI performance and more personalized user interactions.",
+          image: "images/5.png",
+        },
+        {
+          text: "Long term memory",
+          presenter_notes: "SPARKS OF AGI BABY and emergent ablities.",
+          image: "images/6.png",
+        },
+        {
+          text: "GitHub Trends: AGI and Vector Databases",
+          presenter_notes:
+            "Top trending GitHub repositories are currently focused on creating artificial general intelligence (AGI) using vector databases and large language models. This trend indicates a strong push towards developing more advanced and versatile AI systems.",
+          image: "images/7.png",
+        },
+        {
+          text: "1.2 Introduction to Auto-GPT",
+          presenter_notes:
+            "Auto-GPT is an open-source app that uses OpenAI's text-generating models to perform tasks autonomously. It pairs GPT-3.5 and GPT-4 with a companion bot that instructs the AI what to do based on user input.",
+          image:
+            "https://mpost.io/wp-content/uploads/What-Makes-AutoGPT-So-Special.jpg",
+        },
+        {
+          text: "Capabilities of Auto-GPT",
+          presenter_notes:
+            "Auto-GPT can interact with a variety of apps, software, and services both online and local. It automates multi-step projects that would have required back-and-forth prompting with chatbot-oriented AI models like ChatGPT.",
+          image: "images/fill.png",
+        },
+        {
+          text: "Using Auto-GPT",
+          presenter_notes:
+            "Users provide the agent's name, role, objective, and up to five ways to achieve that objective. Auto-GPT relies on memory management, GPT-4, and GPT-3.5 for text generation, file storage, and summarization.",
+          image:
+            "https://autogpt.net/wp-content/uploads/2023/04/autogpt-robot-python.png",
+        },
+        {
+          text: "Tweet 1",
+          presenter_notes: "thats cool",
+          image: "images/8.png",
+        },
+        {
+          text: "Tweet 2",
+          presenter_notes: "thats cool",
+          image: "images/9.png",
+        },
+        {
+          text: "Limitations and Risks",
+          presenter_notes:
+            "Auto-GPT has limitations, sometimes behaving unexpectedly. It can make errors due to its reliance on OpenAI's language models, which are prone to inaccuracies. It also struggles with complex tasks and understanding overlapping goals.",
+          image:
+            "https://autogpt.net/wp-content/uploads/2023/04/auto-gpt-human-robot-chatgpt-ai-1.jpg",
+        },
+        {
+          text: "Human-in-the-Loop Approach",
+          presenter_notes:
+            "Experts like Clara Shih, CEO of Salesforce's Service Cloud, emphasize the importance of including a human in the loop when developing and using generative AI technologies like Auto-GPT.",
+          image:
+            "https://cdn.xl.thumbs.canstockphoto.com/human-and-ai-working-together-human-in-the-loop-concept-flat-vector-illustration-with-text-on-white-background-vector-flat-eps-vector_csp70322210.jpg",
+        },
+        {
+          text: "1.3 Introducing GPT Plugins",
+          presenter_notes:
+            "In this section, we'll explore GPT plugins, a new feature that enhances the capabilities of AI language models like ChatGPT.",
+          image:
+            "https://openaicom.imgix.net/c51f2c96-3595-48ae-9fb6-165563fbb086/chat-plugins.png?auto=compress%2Cformat&fit=min&fm=jpg&q=80&rect=0%2C0%2C2048%2C2048&w=2600",
+        },
+        {
+          text: "There are lots of them",
+          presenter_notes: "Check em all out",
+          image: "images/10.png",
+        },
+        {
+          text: "Browsing Plugin",
+          presenter_notes:
+            "The browsing plugin enables ChatGPT to search the web in real-time, providing fresh and up-to-date information to users. It prioritizes safety and operates as a good citizen of the web.",
+          image: "images/11.png",
+        },
+        {
+          text: "Code Interpreter Plugin",
+          presenter_notes:
+            "The code interpreter plugin provides ChatGPT with a Python interpreter in a sandboxed environment. This allows the AI to perform programming tasks, solve mathematical problems, and more.",
+          image: "images/12.png",
+        },
+        {
+          text: "Retrieval Plugin",
+          presenter_notes:
+            "The retrieval plugin allows ChatGPT to access personal or organizational information sources with permission. Users can search and retrieve relevant information from various sources using natural language.",
+          image: "images/13.png",
+        },
+        {
+          text: "Third-party Plugins",
+          presenter_notes:
+            "Third-party plugins enable ChatGPT to interact with external APIs and services, expanding its capabilities even further. This allows AI to access and use a wide range of tools and platforms. Combination of plug ins.",
+          image: "images/14.png",
+        },
+        {
+          text: "",
+          presenter_notes: "",
+          image: "images/15.png",
+        },
+        {
+          text: "",
+          presenter_notes: "",
+          image: "images/16.png",
+        },
+        {
+          text: "",
+          presenter_notes: "",
+          image: "images/17.png",
+        },
+        {
+          text: "",
+          presenter_notes: "",
+          image: "images/18.png",
+        },
+        {
+          text: "",
+          presenter_notes: "",
+          image: "images/19.png",
+        },
+        {
+          text: "Evolution of Language Models",
+          presenter_notes:
+            "Discuss the progression of language models, from GPT-3 as a pure language model to the better-aligned ChatGPT, and their importance in the AI field.",
+          image:
+            "https://miro.medium.com/v2/resize:fit:1302/format:webp/1*aksFYLAhO-I85DST29svXQ.png",
+        },
+        {
+          text: "The engine vs the simulacrum",
+          presenter_notes:
+            "Look at previous words to predict the next words. If you have a table of numbers and ask it to come up with the sum the model must simulate a calculator. If you ask it to write shakespear it must pretend to be shakespear. The TLDR example is good. the Chat aspect is just a really good simulacrum its better aligned",
+          image:
+            "https://miro.medium.com/v2/resize:fit:1280/format:webp/1*LEmBCYAttxS6uI6rEyPLMQ.png",
+        },
+        {
+          text: "Mismatch, simulacrum vs engine",
+          presenter_notes:
+            "Some times the model and the simulacrum dont align ie the model knows something the simulacrum does not.",
+          image: "images/20.png",
+        },
+        {
+          text: "Speak to me in danish",
+          presenter_notes: "",
+          image: "images/21.png",
+        },
+        {
+          text: "I dont speak danish",
+          presenter_notes: "",
+          image: "images/22.png",
+        },
+        {
+          text: "How to make a good simulacrum? GANs and RL.",
+          presenter_notes: "Bumblebee vs Nemesis Prime (Optimus Prime)",
+          image: "https://i.ytimg.com/vi/WKEP2hF2Pl4/maxresdefault.jpg",
+        },
+        {
+          text: "",
+          presenter_notes: "",
+          image: "images/23.png",
+        },
+        {
+          text: "",
+          presenter_notes: "",
+          image: "images/24.png",
+        },
+        {
+          text: "",
+          presenter_notes: "",
+          image: "images/25.png",
+        },
+        {
+          text: "",
+          presenter_notes: "",
+          image: "images/26.png",
+        },
+
+        {
+          text: "",
+          presenter_notes: "",
+          image: "images/27.png",
+        },
+        {
+          text: "",
+          presenter_notes: "",
+          image: "images/28.png",
+        },
+        {
+          text: "",
+          presenter_notes: "",
+          image: "images/29.png",
+        },
+        {
+          text: "",
+          presenter_notes: "",
+          image: "images/30.png",
+        },
+
+        {
+          text: "HFRL",
+          presenter_notes:
+            "Reward model too many touch points for people to do it you cant go through and score everything by hand. So you train a second model. You use the two bots to against eachother to create a really good simulacrum",
+          image:
+            "https://i0.wp.com/bdtechtalks.com/wp-content/uploads/2023/01/reinforcement-learning-from-human-feedback.jpg?ssl=1",
+        },
+
+        {
+          text: "What does this mean for us? Misalignment to know about.",
+          presenter_notes:
+            "The goal of this all is to create AGI but this is proxie for AGI its not creating an intelegence its trained to create something we think is right.",
+          image: "https://i.imgur.com/sjxQohY.jpg",
+        },
+        {
+          text: "Sonnets, catch, lies.",
+          presenter_notes:
+            "they try to tell you what they think you want to hear. Is this a problem? yes its very dangerous for other applications see the ball example.",
+          image: "images/31.png",
+        },
+        {
+          text: "Model Size and HFRL",
+          presenter_notes: "More liberal and more conservative. ",
+          image: "images/32.png",
+        },
+        {
+          text: "",
+          presenter_notes:
+            "More likely to claim they dont want to be shut down more likely to tell you they are sentient more likely to tell you they arent a threat to humans. this is still a language model its not dangerous now its just saying this.",
+          image: "images/33.png",
+        },
+        {
+          text: "Thank You",
+          presenter_notes: "babbage difference engine",
+          image:
+            "https://images.theconversation.com/files/292002/original/file-20190911-190021-1yop0zq.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=900.0&fit=crop",
+        },
+      ];
+
+      let currentIndex = 0;
+
+      const image = document.getElementById("image");
+      const text = document.getElementById("text");
+
+      // Preload images
+      const imageCache = slides.map((slide) => {
+        const img = new Image();
+        img.src = slide.image;
+        return img;
+      });
+
+      function updateSlide(index) {
+        if (index < 0 || index >= slides.length) return;
+
+        image.style.opacity = 0;
+
+        setTimeout(() => {
+          image.src = slides[index].image;
+          text.innerHTML = slides[index].text;
+          console.log(slides[index].presenter_notes);
+          image.style.opacity = 1;
+        }, 500);
+
+        currentIndex = index;
+      }
+
+      function handleKeyDown(event) {
+        if (event.key === "ArrowRight" || event.key === " ") {
+          updateSlide(currentIndex + 1);
+        } else if (event.key === "ArrowLeft") {
+          updateSlide(currentIndex - 1);
+        }
+      }
+
+      document.addEventListener("keydown", handleKeyDown);
+
+      window.addEventListener("DOMContentLoaded", () => {
+        updateSlide(currentIndex);
+      });
+
+      // Add mobile swipe event listeners (using touch events)
+      let touchStartX = null;
+      let touchEndX = null;
+
+      document.addEventListener("touchstart", (event) => {
+        touchStartX = event.touches[0].clientX;
+      });
+
+      document.addEventListener("touchmove", (event) => {
+        touchEndX = event.touches[0].clientX;
+      });
+
+      document.addEventListener("touchend", () => {
+        if (touchStartX !== null && touchEndX !== null) {
+          if (touchEndX > touchStartX + 50) {
+            updateSlide(currentIndex - 1);
+          } else if (touchEndX < touchStartX - 50) {
+            updateSlide(currentIndex + 1);
+          }
+        }
+
+        touchStartX = null;
+        touchEndX = null;
+      });
+    </script>
+  </body>
+</html>
